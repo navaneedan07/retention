@@ -1,0 +1,380 @@
+{
+  "real": {
+    "dataset_name": "real",
+    "rows_before": 3000,
+    "rows_after": 3000,
+    "duplicate_rows_removed": 0,
+    "rows_missing_target_removed": 0,
+    "rows_invalid_removed": 0,
+    "missing_values": {
+      "load_time": 0,
+      "cta_count": 0,
+      "heading_depth": 0,
+      "scroll_height": 0,
+      "text_density": 0,
+      "visual_clutter_index": 0,
+      "missing_alt_count": 0,
+      "aria_role_issues": 0,
+      "contrast_violations": 0,
+      "clutter_index": 0,
+      "cta_competition_score": 0,
+      "hero_clarity_score": 0,
+      "scroll_friction_index": 0,
+      "readability_index": 0,
+      "cognitive_load_index": 0,
+      "performance_score": 0,
+      "contrast_quality": 0,
+      "accessibility_score": 0,
+      "retention_score": 0
+    },
+    "numeric_ranges": {
+      "load_time": {
+        "min": 0.1688329966429958,
+        "max": 6.424050310461443,
+        "mean": 1.2162262362922889
+      },
+      "cta_count": {
+        "min": 0.0,
+        "max": 62.0,
+        "mean": 18.221
+      },
+      "heading_depth": {
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 1.192
+      },
+      "scroll_height": {
+        "min": 600.0,
+        "max": 120000.0,
+        "mean": 44297.655333333336
+      },
+      "text_density": {
+        "min": 0.6275282523483765,
+        "max": 8.0,
+        "mean": 3.1558513267604154
+      },
+      "visual_clutter_index": {
+        "min": 20.0,
+        "max": 7198.0,
+        "mean": 1491.6586666666667
+      },
+      "missing_alt_count": {
+        "min": 0.0,
+        "max": 7.0,
+        "mean": 0.7776666666666666
+      },
+      "aria_role_issues": {
+        "min": 0.0,
+        "max": 6.0,
+        "mean": 0.6386666666666667
+      },
+      "contrast_violations": {
+        "min": 0.0,
+        "max": 11.0,
+        "mean": 1.262
+      },
+      "clutter_index": {
+        "min": 0.0067,
+        "max": 1.0,
+        "mean": 0.4673229666666666
+      },
+      "cta_competition_score": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.7415416666666667
+      },
+      "hero_clarity_score": {
+        "min": 0.2,
+        "max": 1.0,
+        "mean": 0.324
+      },
+      "scroll_friction_index": {
+        "min": 0.075,
+        "max": 1.0,
+        "mean": 0.8832703666666666
+      },
+      "readability_index": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.4226289333333334
+      },
+      "cognitive_load_index": {
+        "min": 0.0028,
+        "max": 0.9999,
+        "mean": 0.5826029666666667
+      },
+      "performance_score": {
+        "min": 0.0899,
+        "max": 0.9761,
+        "mean": 0.8277010333333332
+      },
+      "contrast_quality": {
+        "min": 0.2667,
+        "max": 1.0,
+        "mean": 0.9158645
+      },
+      "accessibility_score": {
+        "min": 0.73,
+        "max": 1.0,
+        "mean": 0.9400466666666668
+      },
+      "retention_score": {
+        "min": 29.58762738892072,
+        "max": 88.0207028596008,
+        "mean": 60.444936348910815
+      }
+    }
+  },
+  "augmented": {
+    "dataset_name": "augmented",
+    "rows_before": 5024,
+    "rows_after": 5024,
+    "duplicate_rows_removed": 0,
+    "rows_missing_target_removed": 0,
+    "rows_invalid_removed": 0,
+    "missing_values": {
+      "load_time": 0,
+      "cta_count": 0,
+      "heading_depth": 0,
+      "scroll_height": 0,
+      "text_density": 0,
+      "visual_clutter_index": 0,
+      "missing_alt_count": 0,
+      "aria_role_issues": 0,
+      "contrast_violations": 0,
+      "clutter_index": 0,
+      "cta_competition_score": 0,
+      "hero_clarity_score": 0,
+      "scroll_friction_index": 0,
+      "readability_index": 0,
+      "cognitive_load_index": 0,
+      "performance_score": 0,
+      "contrast_quality": 0,
+      "accessibility_score": 0,
+      "retention_score": 0
+    },
+    "numeric_ranges": {
+      "load_time": {
+        "min": 0.124899541429032,
+        "max": 14.768706502750492,
+        "mean": 1.4574349777061104
+      },
+      "cta_count": {
+        "min": 0.0,
+        "max": 433.0,
+        "mean": 55.32444267515923
+      },
+      "heading_depth": {
+        "min": 1.0,
+        "max": 6.0,
+        "mean": 3.214769108280255
+      },
+      "scroll_height": {
+        "min": 600.0,
+        "max": 53470.0,
+        "mean": 14172.257364649682
+      },
+      "text_density": {
+        "min": 0.059760927340532,
+        "max": 2.0104831650163857,
+        "mean": 0.5533010081162999
+      },
+      "visual_clutter_index": {
+        "min": 36.0,
+        "max": 7982.0,
+        "mean": 1600.3618630573249
+      },
+      "missing_alt_count": {
+        "min": 0.0,
+        "max": 82.0,
+        "mean": 6.767316878980892
+      },
+      "aria_role_issues": {
+        "min": 0.0,
+        "max": 14.0,
+        "mean": 0.4568073248407643
+      },
+      "contrast_violations": {
+        "min": 0.0,
+        "max": 36.0,
+        "mean": 6.329617834394904
+      },
+      "clutter_index": {
+        "min": 0.012,
+        "max": 1.0,
+        "mean": 0.494058081210191
+      },
+      "cta_competition_score": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.8870919585987261
+      },
+      "hero_clarity_score": {
+        "min": 0.2,
+        "max": 1.0,
+        "mean": 0.5367595541401273
+      },
+      "scroll_friction_index": {
+        "min": 0.075,
+        "max": 1.0,
+        "mean": 0.8591064689490445
+      },
+      "readability_index": {
+        "min": 0.6596,
+        "max": 1.0,
+        "mean": 0.8594985668789809
+      },
+      "cognitive_load_index": {
+        "min": 0.0582,
+        "max": 0.7932,
+        "mean": 0.5059019307324841
+      },
+      "performance_score": {
+        "min": 0.0,
+        "max": 0.9823,
+        "mean": 0.8050613256369428
+      },
+      "contrast_quality": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.6883076433121019
+      },
+      "accessibility_score": {
+        "min": 0.06,
+        "max": 1.0,
+        "mean": 0.824920382165605
+      },
+      "retention_score": {
+        "min": 5.0,
+        "max": 96.11,
+        "mean": 58.325509554140126
+      }
+    }
+  },
+  "combined": {
+    "dataset_name": "combined",
+    "rows_before": 8024,
+    "rows_after": 8024,
+    "duplicate_rows_removed": 0,
+    "rows_missing_target_removed": 0,
+    "rows_invalid_removed": 0,
+    "missing_values": {
+      "load_time": 0,
+      "cta_count": 0,
+      "heading_depth": 0,
+      "scroll_height": 0,
+      "text_density": 0,
+      "visual_clutter_index": 0,
+      "missing_alt_count": 0,
+      "aria_role_issues": 0,
+      "contrast_violations": 0,
+      "clutter_index": 0,
+      "cta_competition_score": 0,
+      "hero_clarity_score": 0,
+      "scroll_friction_index": 0,
+      "readability_index": 0,
+      "cognitive_load_index": 0,
+      "performance_score": 0,
+      "contrast_quality": 0,
+      "accessibility_score": 0,
+      "retention_score": 0
+    },
+    "numeric_ranges": {
+      "load_time": {
+        "min": 0.124899541429032,
+        "max": 14.768706502750492,
+        "mean": 1.3672522478654494
+      },
+      "cta_count": {
+        "min": 0.0,
+        "max": 433.0,
+        "mean": 41.45226819541376
+      },
+      "heading_depth": {
+        "min": 1.0,
+        "max": 6.0,
+        "mean": 2.4584995014955133
+      },
+      "scroll_height": {
+        "min": 600.0,
+        "max": 120000.0,
+        "mean": 25435.491899302095
+      },
+      "text_density": {
+        "min": 0.059760927340532,
+        "max": 8.0,
+        "mean": 1.526338265834688
+      },
+      "visual_clutter_index": {
+        "min": 20.0,
+        "max": 7982.0,
+        "mean": 1559.7200897308076
+      },
+      "missing_alt_count": {
+        "min": 0.0,
+        "max": 82.0,
+        "mean": 4.527916251246261
+      },
+      "aria_role_issues": {
+        "min": 0.0,
+        "max": 14.0,
+        "mean": 0.5248005982053838
+      },
+      "contrast_violations": {
+        "min": 0.0,
+        "max": 36.0,
+        "mean": 4.43494516450648
+      },
+      "clutter_index": {
+        "min": 0.0067,
+        "max": 1.0,
+        "mean": 0.4840624002991027
+      },
+      "cta_competition_score": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.8326738534396809
+      },
+      "hero_clarity_score": {
+        "min": 0.2,
+        "max": 1.0,
+        "mean": 0.4572133599202393
+      },
+      "scroll_friction_index": {
+        "min": 0.075,
+        "max": 1.0,
+        "mean": 0.8681408275174476
+      },
+      "readability_index": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.6961624626121635
+      },
+      "cognitive_load_index": {
+        "min": 0.0028,
+        "max": 0.9999,
+        "mean": 0.5345787886340978
+      },
+      "performance_score": {
+        "min": 0.0,
+        "max": 0.9823,
+        "mean": 0.8135258225324028
+      },
+      "contrast_quality": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.7733862288135593
+      },
+      "accessibility_score": {
+        "min": 0.06,
+        "max": 1.0,
+        "mean": 0.8679636091724826
+      },
+      "retention_score": {
+        "min": 5.0,
+        "max": 96.11,
+        "mean": 59.11791737870544
+      }
+    }
+  }
+}

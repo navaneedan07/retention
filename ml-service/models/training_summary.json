@@ -1,0 +1,50 @@
+{
+  "model_type": "GradientBoostingRegressor",
+  "features": [
+    "load_time",
+    "cta_count",
+    "heading_depth",
+    "scroll_height",
+    "text_density",
+    "visual_clutter_index",
+    "missing_alt_count",
+    "aria_role_issues",
+    "contrast_violations",
+    "clutter_index",
+    "cta_competition_score",
+    "hero_clarity_score",
+    "scroll_friction_index",
+    "readability_index",
+    "cognitive_load_index",
+    "performance_score",
+    "contrast_quality",
+    "accessibility_score"
+  ],
+  "dataset_rows": 8024,
+  "real_samples": 244,
+  "variation_samples": 4956,
+  "edge_case_samples": 40,
+  "train_mae": 1.7834550860331966,
+  "test_mae": 2.047294122387991,
+  "test_r2": 0.966686025366239,
+  "leaderboard": [
+    {
+      "model": "GradientBoostingRegressor",
+      "test_mae": 2.0473,
+      "test_r2": 0.9667,
+      "cv_mae": 3.3932
+    },
+    {
+      "model": "RandomForestRegressor",
+      "test_mae": 2.0823,
+      "test_r2": 0.9644,
+      "cv_mae": 4.3578
+    },
+    {
+      "model": "ExtraTreesRegressor",
+      "test_mae": 2.0847,
+      "test_r2": 0.9646,
+      "cv_mae": 3.6969
+    }
+  ]
+}

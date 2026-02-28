@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+joblib
+numpy
+pandas
+scikit-learn
+opencv-python-headless
+moviepy
+librosa
