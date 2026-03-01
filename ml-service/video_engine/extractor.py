@@ -134,6 +134,10 @@ class VideoMetricExtractor:
         sample_every_n = max(1, int(round(fps)))
         frame_idx = 0
         while True:
+            current_second = frame_idx / fps
+            if current_second >= duration:
+                break
+
             ok, frame = cap.read()
             if not ok:
                 break
@@ -142,7 +146,7 @@ class VideoMetricExtractor:
                 frame_idx += 1
                 continue
 
-            sec = min(duration - 1, int(frame_idx / fps))
+            sec = min(duration - 1, int(current_second))
 
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             hist = cv2.calcHist([gray], [0], None, [32], [0, 256])

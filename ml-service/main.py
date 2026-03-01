@@ -546,7 +546,9 @@ def run_video_retention_pipeline(video_path: Optional[str]):
     simulator = VideoSimulator()
     optimizer = OptimizationEngine(simulator)
 
-    extraction = extractor.extract_metrics(video_path=video_path, video_duration=None)
+    max_video_duration = int(os.getenv("VIDEO_MAX_DURATION_SECONDS", "90"))
+
+    extraction = extractor.extract_metrics(video_path=video_path, video_duration=max_video_duration)
     friction_timeline = extraction["timeline"]
     effective_duration = extraction["duration"]
 
