@@ -1,0 +1,50 @@
+{
+  "model_type": "GradientBoostingRegressor",
+  "dataset_rows": 8024,
+  "train_size": 6419,
+  "test_size": 1605,
+  "metrics": {
+    "train_mae": 1.7834550860331966,
+    "test_mae": 2.047294122387991,
+    "train_rmse": 2.258403339580775,
+    "test_rmse": 2.6544723132884527,
+    "train_r2": 0.9758895541094537,
+    "test_r2": 0.966686025366239,
+    "test_mape_pct": 3.8774888109926677,
+    "within_1pt_pct": 32.33644859813084,
+    "within_2pt_pct": 58.75389408099688,
+    "within_3pt_pct": 76.69781931464175,
+    "within_5pt_pct": 93.5202492211838
+  },
+  "existing_training_summary": {
+    "test_mae": 2.047294122387991,
+    "test_r2": 0.966686025366239,
+    "cv_leaderboard": [
+      {
+        "model": "GradientBoostingRegressor",
+        "test_mae": 2.0473,
+        "test_r2": 0.9667,
+        "cv_mae": 3.3932
+      },
+      {
+        "model": "RandomForestRegressor",
+        "test_mae": 2.0823,
+        "test_r2": 0.9644,
+        "cv_mae": 4.3578
+      },
+      {
+        "model": "ExtraTreesRegressor",
+        "test_mae": 2.0847,
+        "test_r2": 0.9646,
+        "cv_mae": 3.6969
+      }
+    ]
+  },
+  "artifacts": {
+    "predicted_vs_actual": "C:\\git\\retention\\ml-service\\models\\eval_reports\\predicted_vs_actual.png",
+    "residual_distribution": "C:\\git\\retention\\ml-service\\models\\eval_reports\\residual_distribution.png",
+    "loss_by_score_bin": "C:\\git\\retention\\ml-service\\models\\eval_reports\\loss_by_score_bin.png",
+    "feature_importance_top12": "C:\\git\\retention\\ml-service\\models\\eval_reports\\feature_importance_top12.png",
+    "hooklabs_model_dashboard": "C:\\git\\retention\\ml-service\\models\\eval_reports\\hooklabs_model_dashboard.png"
+  }
+}
