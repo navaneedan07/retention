@@ -4,13 +4,15 @@ Uses a trained GradientBoosting model + 3-persona attention decay simulation.
 Falls back to formula-based estimation when the model isn't available.
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 import numpy as np
 import pandas as pd
 import os
+import tempfile
+import shutil
 from typing import Optional, Literal
 
 app = FastAPI(title="RetainIQ ML Service")
@@ -538,18 +540,16 @@ from video_engine.optimizer import OptimizationEngine
 class VideoSimulationRequest(BaseModel):
     video_path: Optional[str] = None
 
-@app.post('/api/simulate-video')
-def simulate_video_retention(req: VideoSimulationRequest):
+
+def run_video_retention_pipeline(video_path: Optional[str]):
     extractor = VideoMetricExtractor()
     simulator = VideoSimulator()
     optimizer = OptimizationEngine(simulator)
 
-    # 1. Extract metrics and map to friction (Stages 1-6)
-    extraction = extractor.extract_metrics(video_path=req.video_path, video_duration=None)
+    extraction = extractor.extract_metrics(video_path=video_path, video_duration=None)
     friction_timeline = extraction["timeline"]
     effective_duration = extraction["duration"]
 
-    # Define weights for different friction types (Stage 8)
     weights = {
         'weak_hook_friction': 1.0,
         'low_motion_friction': 0.8,
@@ -557,10 +557,7 @@ def simulate_video_retention(req: VideoSimulationRequest):
         'low_face_friction': 0.7
     }
 
-    # 2. Run simulation (Stages 7-10)
     simulation_result = simulator.simulate_retention(effective_duration, friction_timeline, weights)
-
-    # 3. Generate What-if improvements (Stages 11-12)
     improvements = optimizer.generate_improvements(effective_duration, friction_timeline, weights)
 
     return {
@@ -573,6 +570,27 @@ def simulate_video_retention(req: VideoSimulationRequest):
         'timeline': simulation_result['timeline'],
         'improvements': improvements
     }
+
+@app.post('/api/simulate-video')
+def simulate_video_retention(req: VideoSimulationRequest):
+    return run_video_retention_pipeline(req.video_path)
+
+
+@app.post('/api/simulate-video-upload')
+async def simulate_video_retention_upload(video: UploadFile = File(...)):
+    suffix = os.path.splitext(video.filename or '')[1] or '.mp4'
+    temp_path = None
+
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as temp_file:
+            shutil.copyfileobj(video.file, temp_file)
+            temp_path = temp_file.name
+
+        return run_video_retention_pipeline(temp_path)
+    finally:
+        await video.close()
+        if temp_path and os.path.exists(temp_path):
+            os.remove(temp_path)
 
 
 

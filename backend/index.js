@@ -304,6 +304,39 @@ async function getVideoSimulation(videoPath) {
   }
 }
 
+async function getVideoSimulationFromUpload(uploadedFilePath, originalFileName, mimeType) {
+  try {
+    const fileBuffer = await fs.promises.readFile(uploadedFilePath);
+    const formData = new FormData();
+    const safeFileName = originalFileName || path.basename(uploadedFilePath) || 'upload.mp4';
+
+    formData.append(
+      'video',
+      new Blob([fileBuffer], { type: mimeType || 'application/octet-stream' }),
+      safeFileName,
+    );
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 180000);
+
+    const response = await fetch(`${ML_SERVICE_URL}/api/simulate-video-upload`, {
+      method: 'POST',
+      body: formData,
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`ML video upload API returned ${response.status}: ${text}`);
+    }
+
+    return await response.json();
+  } catch (err) {
+    throw new Error(`Video upload simulation failed: ${err.message}`);
+  }
+}
+
 app.post('/api/analyze', async (req, res) => {
   let { url, userProfile } = req.body;
   if (!url) {
@@ -414,7 +447,11 @@ app.post('/api/simulate-video-upload', upload.single('video'), async (req, res) 
   }
 
   try {
-    const result = await getVideoSimulation(uploadedFilePath);
+    const result = await getVideoSimulationFromUpload(
+      uploadedFilePath,
+      req.file?.originalname,
+      req.file?.mimetype,
+    );
     return res.json({
       input: {
         videoPath: req.file?.originalname || null,
