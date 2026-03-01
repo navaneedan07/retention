@@ -125,28 +125,16 @@ class VideoMetricExtractor:
         motion_values = np.zeros(duration, dtype=float)
         scene_values = np.zeros(duration, dtype=float)
         face_values = np.zeros(duration, dtype=float)
-        sample_counts = np.zeros(duration, dtype=int)
 
         face_cascade = cv2.CascadeClassifier(
             cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
         )
 
-        sample_every_n = max(1, int(round(fps)))
-        frame_idx = 0
-        while True:
-            current_second = frame_idx / fps
-            if current_second >= duration:
-                break
-
+        for sec in range(duration):
+            cap.set(cv2.CAP_PROP_POS_MSEC, float(sec * 1000))
             ok, frame = cap.read()
             if not ok:
-                break
-
-            if frame_idx % sample_every_n != 0:
-                frame_idx += 1
                 continue
-
-            sec = min(duration - 1, int(current_second))
 
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             hist = cv2.calcHist([gray], [0], None, [32], [0, 256])
@@ -154,25 +142,18 @@ class VideoMetricExtractor:
 
             if prev_gray is not None:
                 diff = cv2.absdiff(gray, prev_gray)
-                motion_values[sec] += float(np.mean(diff) / 255.0)
+                motion_values[sec] = float(np.mean(diff) / 255.0)
 
             if prev_hist is not None:
-                scene_values[sec] += float(cv2.compareHist(prev_hist, hist, cv2.HISTCMP_BHATTACHARYYA))
+                scene_values[sec] = float(cv2.compareHist(prev_hist, hist, cv2.HISTCMP_BHATTACHARYYA))
 
             faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-            face_values[sec] += 1.0 if len(faces) > 0 else 0.0
+            face_values[sec] = 1.0 if len(faces) > 0 else 0.0
 
-            sample_counts[sec] += 1
             prev_gray = gray
             prev_hist = hist
-            frame_idx += 1
 
         cap.release()
-
-        sample_counts = np.where(sample_counts == 0, 1, sample_counts)
-        motion_values = motion_values / sample_counts
-        scene_values = scene_values / sample_counts
-        face_values = face_values / sample_counts
 
         max_motion = float(np.max(motion_values)) if np.max(motion_values) > 0 else 1.0
         max_scene = float(np.max(scene_values)) if np.max(scene_values) > 0 else 1.0
