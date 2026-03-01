@@ -20,6 +20,8 @@ const upload = multer({
 });
 
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:8000';
+const ML_VIDEO_REQUEST_TIMEOUT_MS = Number(process.env.ML_VIDEO_REQUEST_TIMEOUT_MS || 600000);
+const ML_VIDEO_UPLOAD_TIMEOUT_MS = Number(process.env.ML_VIDEO_UPLOAD_TIMEOUT_MS || 600000);
 
 const VIDEO_PERSONAS = [
   {
@@ -283,7 +285,7 @@ async function getVideoSimulation(videoPath) {
     };
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 600000);
+    const timeout = setTimeout(() => controller.abort(), ML_VIDEO_REQUEST_TIMEOUT_MS);
 
     const response = await fetch(`${ML_SERVICE_URL}/api/simulate-video`, {
       method: 'POST',
@@ -300,6 +302,9 @@ async function getVideoSimulation(videoPath) {
 
     return await response.json();
   } catch (err) {
+    if (err?.name === 'AbortError') {
+      throw new Error(`Video simulation timed out after ${ML_VIDEO_REQUEST_TIMEOUT_MS}ms`);
+    }
     throw new Error(`Video simulation failed: ${err.message}`);
   }
 }
@@ -317,7 +322,7 @@ async function getVideoSimulationFromUpload(uploadedFilePath, originalFileName, 
     );
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 180000);
+    const timeout = setTimeout(() => controller.abort(), ML_VIDEO_UPLOAD_TIMEOUT_MS);
 
     const response = await fetch(`${ML_SERVICE_URL}/api/simulate-video-upload`, {
       method: 'POST',
@@ -333,6 +338,9 @@ async function getVideoSimulationFromUpload(uploadedFilePath, originalFileName, 
 
     return await response.json();
   } catch (err) {
+    if (err?.name === 'AbortError') {
+      throw new Error(`Video upload simulation timed out after ${ML_VIDEO_UPLOAD_TIMEOUT_MS}ms`);
+    }
     throw new Error(`Video upload simulation failed: ${err.message}`);
   }
 }

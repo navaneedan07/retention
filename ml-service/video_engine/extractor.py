@@ -5,6 +5,8 @@ from typing import List, Dict, Optional, Any
 
 import numpy as np
 
+ENABLE_AUDIO_EXTRACTION = os.getenv("ENABLE_AUDIO_EXTRACTION", "false").lower() == "true"
+
 if importlib.util.find_spec("cv2") is not None:
     cv2 = __import__("cv2")
 else:
@@ -168,7 +170,12 @@ class VideoMetricExtractor:
         energy_per_sec = np.zeros(duration, dtype=float)
 
         file_ext = os.path.splitext(video_path)[1].lower()
-        should_extract_audio = librosa is not None and duration <= 90 and file_ext in {".mp4", ".m4v", ".webm", ".avi"}
+        should_extract_audio = (
+            ENABLE_AUDIO_EXTRACTION
+            and librosa is not None
+            and duration <= 90
+            and file_ext in {".mp4", ".m4v", ".webm", ".avi"}
+        )
 
         if should_extract_audio:
             try:
@@ -291,7 +298,12 @@ class VideoMetricExtractor:
         silence_per_sec = np.zeros(duration, dtype=float)
         energy_per_sec = np.zeros(duration, dtype=float)
         file_ext = os.path.splitext(video_path)[1].lower()
-        should_extract_audio = librosa is not None and duration <= 90 and file_ext in {".mp4", ".m4v", ".webm", ".avi"}
+        should_extract_audio = (
+            ENABLE_AUDIO_EXTRACTION
+            and librosa is not None
+            and duration <= 90
+            and file_ext in {".mp4", ".m4v", ".webm", ".avi"}
+        )
 
         if should_extract_audio:
             try:
