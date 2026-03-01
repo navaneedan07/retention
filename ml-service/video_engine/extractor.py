@@ -147,8 +147,11 @@ class VideoMetricExtractor:
             if prev_hist is not None:
                 scene_values[sec] = float(cv2.compareHist(prev_hist, hist, cv2.HISTCMP_BHATTACHARYYA))
 
-            faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-            face_values[sec] = 1.0 if len(faces) > 0 else 0.0
+            if sec % 3 == 0:
+                faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+                face_values[sec] = 1.0 if len(faces) > 0 else 0.0
+            elif sec > 0:
+                face_values[sec] = face_values[sec - 1]
 
             prev_gray = gray
             prev_hist = hist

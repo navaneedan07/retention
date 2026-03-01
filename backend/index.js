@@ -283,7 +283,7 @@ async function getVideoSimulation(videoPath) {
     };
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 300000);
+    const timeout = setTimeout(() => controller.abort(), 600000);
 
     const response = await fetch(`${ML_SERVICE_URL}/api/simulate-video`, {
       method: 'POST',
