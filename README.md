@@ -6,7 +6,7 @@ Hooklabs is an AI-powered retention intelligence platform that predicts both:
 
 It combines a modern web app, Node.js API layer, and Python ML service to provide pre-publish retention predictions, drop-off insights, and prioritized improvement recommendations.
 
-## Project Structure
+## Project Structure 
 
 - `frontend/` — Next.js app (UI for Website + Video retention)
 - `backend/` — Express API (feature extraction orchestration, simulation routes, ML proxying)
