@@ -62,7 +62,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:3001';
+const API_BASE = 'https://retention-backend-ieae.onrender.com';
 
 const PERSONA_COLORS: Record<string, string> = {
   high_interest: '#10B981',

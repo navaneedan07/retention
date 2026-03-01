@@ -29,7 +29,7 @@ import {
 } from 'recharts';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:3001';
+const API_BASE = 'https://retention-backend-ieae.onrender.com';
 
 interface SimulationResponse {
   input: {
